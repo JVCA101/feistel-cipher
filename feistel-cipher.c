@@ -96,10 +96,10 @@ int main(int argc, char const *argv[])
     word32 k = 30, right, left;
     word64 whole_word = 10988738201;
 
-    // char whole_word_str[8];
-    // printf("Enter a 64-bit number (8 bytes): ");
-    // fgets(whole_word_str, sizeof(whole_word_str), stdin);
-    // whole_word = (word64)(whole_word_str);
+    char whole_word_str[8];
+    printf("Enter a 64-bit number (8 bytes): ");
+    fgets(whole_word_str, sizeof(whole_word_str), stdin);
+    whole_word = (word64)(whole_word_str);
 
     left = (word32)(whole_word >> 32);
     right = (word32)(whole_word & 0xFFFFFFFF);
@@ -113,9 +113,9 @@ int main(int argc, char const *argv[])
     feistel_cipher_inverse(encrypted_left, encrypted_right, k, &decrypted_left, &decrypted_right);
     printf("Decrypted Values:\n Left: %u, Right: %u\n", decrypted_left, decrypted_right);
 
-    // word64 decrypted_whole_word = ((word64)decrypted_left << 32) | (word64)decrypted_right;
-    // printf("Decrypted 64-bit number: %lu\n", decrypted_whole_word);
-    // printf("Decrypted in string: %s\n", (char*)decrypted_whole_word);
+    word64 decrypted_whole_word = ((word64)decrypted_left << 32) | (word64)decrypted_right;
+    printf("Decrypted 64-bit number: %lu\n", decrypted_whole_word);
+    printf("Decrypted in string: %s\n", (char*)decrypted_whole_word);
 
     return 0;
 }
